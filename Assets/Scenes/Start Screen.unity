@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Surprise Sylvan Celebration
+  m_text: Surprise Sylvan Soiree
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 08679045e21005148859259950fac378, type: 2}
   m_sharedMaterial: {fileID: 8990992239698120599, guid: 08679045e21005148859259950fac378,
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1447393160}
-    characterCount: 27
+    characterCount: 22
     spriteCount: 0
     spaceCount: 2
     wordCount: 3

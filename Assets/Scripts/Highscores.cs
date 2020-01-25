@@ -6,41 +6,13 @@ public class Highscores : MonoBehaviour
 {
     public int score;
     public List<GameObject> entries;
-    public SortedDictionary<int, string> scores = new SortedDictionary<int, string>{
-        { 320,"UMR" },
-        { 301,"RMS" },
-        { 240,"RCC" },
-        { 250,"DJT" },
-        { 300,"ESR" },
-        { 290,"SLL" },
-        { 280,"CAT" },
-        { 260,"DOG" },
-        { 230,"GOD" },
-        { 210,"K&R" },
-    }; //Key is recorded highscore, value is name of player
+    public SortedDictionary<int, string> scores = new SortedDictionary<int, string> { }; //Key is recorded highscore, value is name of player
     // Start is called before the first frame update
     void Awake()
     {
-        PlayerPrefs.SetInt("0", 320);
-        PlayerPrefs.SetString("320", "UMR");
-        PlayerPrefs.SetInt("1", 301);
-        PlayerPrefs.SetString("301", "RMS");
-        PlayerPrefs.SetInt("2", 240);
-        PlayerPrefs.SetString("240", "RCC");
-        PlayerPrefs.SetInt("3", 250);
-        PlayerPrefs.SetString("250", "DJT");
-        PlayerPrefs.SetInt("4", 300);
-        PlayerPrefs.SetString("300", "ESR");
-        PlayerPrefs.SetInt("5", 290);
-        PlayerPrefs.SetString("290", "SLL");
-        PlayerPrefs.SetInt("6", 280);
-        PlayerPrefs.SetString("280", "CAT");
-        PlayerPrefs.SetInt("7", 260);
-        PlayerPrefs.SetString("260", "DOG");
-        PlayerPrefs.SetInt("8", 230);
-        PlayerPrefs.SetString("230", "GOD");
-        PlayerPrefs.SetInt("9", 210);
-        PlayerPrefs.SetString("210", "K&R");
+        if (PlayerPrefs.GetInt("0", 0) == 0){
+            LoadDefaultHighscores();
+         }
         score = PlayerPrefs.GetInt("score");
         for (int i = 0; i < 10; i++)
         {
@@ -64,16 +36,39 @@ public class Highscores : MonoBehaviour
         scores.Add(playerScore, playerName); // add player to scores
         int i = scores.Count;
         foreach ( KeyValuePair<int, string> score in scores) //have to do this backwards since it's sorted ascending
-            {        
+        {
+            i--;
             if (i <= 10) //grab only the last 10 entries
             { 
 
                 PlayerPrefs.SetInt(i.ToString(), score.Key); // set the new top score for that position
                 PlayerPrefs.SetString(score.Key.ToString(), score.Value); // set the new name for that position
             }
-            i--;
         }
         PlayerPrefs.Save();
     }
 
+    public void LoadDefaultHighscores()
+    {
+        PlayerPrefs.SetInt("0", 301);
+        PlayerPrefs.SetString("301", "UMR");
+        PlayerPrefs.SetInt("1", 299);
+        PlayerPrefs.SetString("299", "RMS");
+        PlayerPrefs.SetInt("2", 298);
+        PlayerPrefs.SetString("298", "ESR");
+        PlayerPrefs.SetInt("3", 297);
+        PlayerPrefs.SetString("297", "K&R");
+        PlayerPrefs.SetInt("4", 296);
+        PlayerPrefs.SetString("296", "RCC");
+        PlayerPrefs.SetInt("5", 295);
+        PlayerPrefs.SetString("295", "SLL");
+        PlayerPrefs.SetInt("6", 294);
+        PlayerPrefs.SetString("294", "CAT");
+        PlayerPrefs.SetInt("7", 293);
+        PlayerPrefs.SetString("293", "DOG");
+        PlayerPrefs.SetInt("8", 292);
+        PlayerPrefs.SetString("292", "GOD");
+        PlayerPrefs.SetInt("9", 291);
+        PlayerPrefs.SetString("291", "MAN");
+    }
 }
